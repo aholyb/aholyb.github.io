@@ -1,0 +1,10 @@
+.page {
+  max-width: 1180px;
+  margin: var(--frame-gap) auto;
+  border: 1px solid var(--line);
+  border-radius: clamp(18px, 3vw, 34px);
+  background: var(--stage);
+  /* `clip` rounds the corners without creating a scroll container,
+     which would break both the sticky header and scroll snapping. */
+  overflow: clip;
+}

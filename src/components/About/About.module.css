@@ -1,0 +1,146 @@
+.section {
+  padding: clamp(40px, 7vw, 90px) clamp(20px, 4vw, 56px);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 6vw, 90px);
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.label {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.intro {
+  max-width: 430px;
+  margin: 0;
+  font-size: 16px;
+}
+
+.intro em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: start;
+}
+
+.stacks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  padding: 18px 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(2px);
+  transition: background 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  background: var(--card-strong);
+  border-color: rgba(20, 20, 20, 0.35);
+  transform: translateY(-3px);
+}
+
+.card:nth-child(2) {
+  width: min(100%, 380px);
+}
+
+.card:nth-child(3) {
+  width: min(100%, 560px);
+}
+
+.cardTitle {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.items {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2;
+  color: var(--muted);
+  word-spacing: 0.1em;
+}
+
+.divider {
+  color: rgba(20, 20, 20, 0.35);
+}
+
+.photoWrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 3 / 4;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.photoWrap:hover .photo {
+  transform: scale(1.03);
+  filter: grayscale(0.6) contrast(1.05);
+}
+
+.footnote {
+  max-width: 300px;
+  margin: 26px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footnote em {
+  color: var(--text);
+  font-style: italic;
+  font-weight: 500;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* On a phone the portrait leads the section as a small card instead of
+     taking over a whole screen. */
+  .photoWrap {
+    order: -1;
+    width: min(100%, 230px);
+    margin: 0 0 4px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .photo {
+    object-position: 50% 20%;
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(3) {
+    width: 100%;
+  }
+
+  .head {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,207 @@
+.section {
+  padding: clamp(40px, 7vw, 90px) 0;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 6vw, 90px);
+  padding: 0 clamp(20px, 4vw, 56px);
+  margin-bottom: 34px;
+}
+
+.label {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.note {
+  max-width: 430px;
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.viewport {
+  --cw: 430px;
+  --gap: 24px;
+  overflow: hidden;
+  padding-left: calc(50% - var(--cw) / 2);
+  padding-right: calc(50% - var(--cw) / 2);
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--gap);
+  transform: translateX(calc(-1 * var(--i) * (var(--cw) + var(--gap))));
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card {
+  flex: 0 0 var(--cw);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  opacity: 0.32;
+  transform: scale(0.94);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cardActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.shot {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Cards without a public screenshot get a coloured plate instead. */
+.thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(150deg, #1f1f1f, #4a4a4a 55%, #101010);
+}
+
+.sberoffice {
+  background: linear-gradient(140deg, #12241d, #2f5f4a 55%, #0d1613);
+}
+
+.alfa {
+  background: linear-gradient(140deg, #241111, #8c3a33 55%, #150a09);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.morePill {
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-size: 13px;
+  font-style: italic;
+  transition: background 0.25s ease;
+}
+
+.moreCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--on-ink);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.more:hover .morePill,
+.more:hover .moreCircle {
+  background: var(--accent);
+}
+
+.more:hover .moreCircle {
+  transform: translate(2px, -2px);
+}
+
+.lockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  cursor: not-allowed;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-color: var(--ink);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 620px) {
+  .viewport {
+    --cw: 290px;
+  }
+
+  .head {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

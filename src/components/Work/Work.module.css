@@ -1,0 +1,219 @@
+.section {
+  padding: clamp(40px, 7vw, 80px) 0 clamp(30px, 5vw, 60px);
+}
+
+.title {
+  margin: 0 clamp(20px, 4vw, 56px) 26px;
+  text-align: right;
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: clamp(40px, 8vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.table {
+  border-top: 1px solid var(--line);
+}
+
+.entry {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s ease;
+}
+
+.entryOpen {
+  background: var(--card);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 0.8fr) minmax(0, 1.2fr) auto;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 18px clamp(20px, 4vw, 56px);
+  text-align: left;
+  color: var(--muted);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--text);
+}
+
+.entryOpen .row {
+  color: var(--text);
+}
+
+.period {
+  font-size: 14px;
+}
+
+.duration {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.company {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.role {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.sep {
+  padding: 0 10px;
+  opacity: 0.5;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.toggleLabel {
+  color: var(--muted);
+}
+
+.chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.3s ease;
+}
+
+.entryOpen .chevron {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+
+.entryOpen .toggleLabel {
+  color: var(--accent);
+}
+
+.panel {
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+
+.panelInner {
+  padding: 4px 0 28px;
+  max-width: 940px;
+  animation: reveal 0.3s ease;
+}
+
+.summary {
+  margin: 0 0 20px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px 40px;
+}
+
+.detailsTitle {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1.5px;
+  background: var(--ink);
+  opacity: 0.55;
+}
+
+.listAccent li::before {
+  background: var(--accent);
+  opacity: 1;
+}
+
+.total {
+  padding: 22px clamp(20px, 4vw, 56px) 0;
+  text-align: right;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.totalValue {
+  display: block;
+  font-style: italic;
+  color: var(--text);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 16px;
+  }
+
+  .period {
+    grid-column: 1;
+  }
+
+  .company {
+    grid-column: 1;
+  }
+
+  .role {
+    grid-column: 1;
+  }
+
+  .toggle {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+
+  .toggleLabel {
+    display: none;
+  }
+
+  .title {
+    text-align: left;
+  }
+}
