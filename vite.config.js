@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Root by default; CI sets VITE_BASE to /<repo>/ for a GitHub Pages build.
+  base: process.env.VITE_BASE ?? '/',
   plugins: [react()],
   test: {
     environment: 'jsdom',

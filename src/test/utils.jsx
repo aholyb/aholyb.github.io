@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { LanguageProvider } from "../i18n/LanguageContext.jsx";
 
 /**
@@ -9,4 +9,4 @@ export function renderWithLanguage(ui, options) {
   return render(ui, { wrapper: LanguageProvider, ...options });
 }
 
-export * from "@testing-library/react";
+export { act, fireEvent, screen, waitFor, within };
