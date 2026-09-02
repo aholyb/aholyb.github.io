@@ -110,8 +110,9 @@
 }
 
 .summary {
+  /* Same size as the lists below, so every dash in the panel matches. */
   margin: 0 0 20px;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text);
 }
 
@@ -142,22 +143,22 @@
 
 .list li {
   position: relative;
-  padding-left: 18px;
+  padding-left: 24px;
 }
 
+/* The marker used to be a 6px bar, visibly shorter than the em dashes in the
+   copy around it. Drawing the character itself keeps every dash identical. */
 .list li::before {
-  content: "";
+  content: "—";
   position: absolute;
   left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1.5px;
-  background: var(--ink);
+  top: 0;
+  color: var(--ink);
   opacity: 0.55;
 }
 
 .listAccent li::before {
-  background: var(--accent);
+  color: var(--accent);
   opacity: 1;
 }
 
