@@ -1,8 +1,7 @@
 # Anton Holub — portfolio
 
 A single-page portfolio site for a frontend developer. React 19 + Vite, styled
-with CSS Modules, no UI kit and no CSS framework — every component is written by
-hand.
+with CSS Modules, with no UI kit and no CSS framework.
 
 [Русская версия ниже ↓](#портфолио--антон-голуб)
 
@@ -141,7 +140,7 @@ Where to edit what:
 # Портфолио — Антон Голуб
 
 Одностраничный сайт-портфолио фронтенд-разработчика. React 19 + Vite, стили на
-CSS Modules, без UI-китов и CSS-фреймворков — все компоненты написаны руками.
+CSS Modules, без UI-китов и CSS-фреймворков.
 
 [English version above ↑](#anton-holub--portfolio)
 
