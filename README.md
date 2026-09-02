@@ -28,6 +28,32 @@ src/
 The palette is sampled from the hero photograph: the sky at its top edge is the
 section background, the sun is the accent colour.
 
+## Testing
+
+Unit and component tests run in Vitest with Testing Library and jsdom; the
+end-to-end scenarios run in Cypress against the dev server.
+
+```bash
+npm test         # 58 unit and component tests
+npm run e2e      # starts the dev server, runs 21 Cypress scenarios headlessly
+npm run e2e:open # same, in the interactive Cypress runner
+```
+
+What is covered:
+
+- `src/i18n/translations.test.js` — both locales stay structurally identical, no
+  empty strings, every project card carries a link or an NDA lock but never
+  both, social links are real https URLs.
+- `src/i18n/LanguageContext.test.jsx` — the language hook: the copy only swaps
+  behind the loader, repeated and concurrent switches are ignored, the choice
+  lands on `<html lang>`, every consumer sees the same language.
+- Component tests for the header, hero, work accordion and project carousel —
+  including the NDA cards rendering a disabled button instead of a link.
+- `cypress/e2e/portfolio.cy.js` — user journeys: first visit, jumping between
+  sections, switching language and back, reading the work history, walking the
+  project carousel, checking outbound links, and the phone layout. Every
+  scenario also fails if the page logs a console error.
+
 ## Development
 
 ```bash
