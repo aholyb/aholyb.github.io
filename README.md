@@ -105,10 +105,11 @@ layout. Every scenario also fails if the page writes to `console.error`.
 three; `push` waits for `build`.
 
 To use GitHub Pages, enable it once in **Settings → Pages → Source: GitHub
-Actions**. The build sets `VITE_BASE=/<repo>/` so assets resolve on a project
-page. If the site is hosted elsewhere (Vercel, Netlify), drop the `push` job —
-those platforms build the repository themselves and serve it from the root, and
-`vite.config.js` falls back to `base: '/'` when `VITE_BASE` is not set.
+Actions**. The build picks the asset base from the repository name: `/` for a
+user site (`<owner>.github.io`), `/<repo>/` for a project page. If the site is
+hosted elsewhere (Vercel, Netlify), drop the `push` job — those platforms build
+the repository themselves and serve it from the root, and `vite.config.js` falls
+back to `base: '/'` when `VITE_BASE` is not set.
 
 ## Structure
 
@@ -243,8 +244,8 @@ npm run e2e:open   # то же самое в интерактивном ранн
 `push` ждёт `build`.
 
 Чтобы заработал GitHub Pages, его нужно один раз включить в **Settings → Pages →
-Source: GitHub Actions**. Сборка выставляет `VITE_BASE=/<repo>/`, чтобы пути к
-ассетам сходились на project-странице. Если сайт живёт на другом хостинге
+Source: GitHub Actions**. Сборка сама выбирает базовый путь по имени репозитория: `/` для
+user-сайта (`<owner>.github.io`) и `/<repo>/` для project-страницы. Если сайт живёт на другом хостинге
 (Vercel, Netlify) — джобу `push` можно удалить: эти платформы собирают
 репозиторий сами и отдают его из корня, а `vite.config.js` без `VITE_BASE`
 падает обратно на `base: '/'`.

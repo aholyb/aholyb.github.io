@@ -124,9 +124,13 @@ jobs:
           key: deps-${{ runner.os }}-node${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
 
       - name: Build
-        # A project page is served from /<repo>/, so the asset base has to match.
+        # A user site (<owner>.github.io) is served from the root, a project
+        # page from /<repo>/ — the asset base has to match either way.
         env:
-          VITE_BASE: /${{ github.event.repository.name }}/
+          VITE_BASE: >-
+            ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner)
+            && '/'
+            || format('/{0}/', github.event.repository.name) }}
         run: npm run build
 
       - uses: actions/upload-artifact@v4
