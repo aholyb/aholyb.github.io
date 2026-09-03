@@ -185,6 +185,35 @@ describe("contacting", () => {
   });
 });
 
+describe("downloading the CV", () => {
+  const EN = "/resume/Anton_Holub_Frontend_Developer_EN.pdf";
+  const RU = "/resume/Anton_Holub_Frontend_Developer_RU.pdf";
+
+  it("offers the English file in the hero and in the contacts", () => {
+    cy.contains("#top a", "Resume")
+      .should("have.attr", "href", EN)
+      .and("have.attr", "download");
+    cy.contains("#contacts a", "Resume").should("have.attr", "href", EN);
+  });
+
+  it("switches to the Russian file together with the page", () => {
+    cy.contains("button", "Ru").click();
+    cy.get('[role="status"]', { timeout: 4000 }).should("not.exist");
+
+    cy.contains("#top a", "Резюме").should("have.attr", "href", RU);
+    cy.contains("#contacts a", "Резюме").should("have.attr", "href", RU);
+  });
+
+  it("really serves both files", () => {
+    [EN, RU].forEach((file) => {
+      cy.request(file).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.headers["content-type"]).to.include("pdf");
+      });
+    });
+  });
+});
+
 describe("on a phone", () => {
   beforeEach(() => {
     cy.viewport(375, 812);

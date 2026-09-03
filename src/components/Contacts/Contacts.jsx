@@ -1,6 +1,7 @@
 import { useLanguage } from "../../i18n/LanguageContext.jsx";
 import { socials } from "../../i18n/translations";
 import { socialIcons } from "../Icons/Icons.jsx";
+import ResumeButton from "../ResumeButton/ResumeButton.jsx";
 import styles from "./Contacts.module.css";
 
 export default function Contacts() {
@@ -16,6 +17,8 @@ export default function Contacts() {
           <p className={styles.text}>{t.contacts.text}</p>
 
           <div className={styles.links}>
+            <ResumeButton />
+
             {socials.map((item) => {
               const Icon = socialIcons[item.id];
               return (

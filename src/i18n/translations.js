@@ -19,6 +19,10 @@ export const translations = {
       ],
       cta: "Projects",
     },
+    resume: {
+      label: "Resume",
+      file: "Anton_Holub_Frontend_Developer_EN.pdf",
+    },
     projects: {
       label: "... /Projects ...",
       note: "Bank products are under NDA, so those cards carry no link — the commercial websites below are live.",
@@ -231,6 +235,10 @@ export const translations = {
         ", чтобы разработка приносила удовольствие.",
       ],
       cta: "Проекты",
+    },
+    resume: {
+      label: "Резюме",
+      file: "Anton_Holub_Frontend_Developer_RU.pdf",
     },
     projects: {
       label: "... /Проекты ...",

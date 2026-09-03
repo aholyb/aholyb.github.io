@@ -1,6 +1,7 @@
 import { useLanguage } from "../../i18n/LanguageContext.jsx";
 import { socials } from "../../i18n/translations";
 import { ArrowIcon, socialIcons } from "../Icons/Icons.jsx";
+import ResumeButton from "../ResumeButton/ResumeButton.jsx";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -32,6 +33,8 @@ export default function Hero() {
       </p>
 
       <div className={styles.socials}>
+        <ResumeButton />
+
         {socials.map((item) => {
           const Icon = socialIcons[item.id];
           return (
